@@ -1,13 +1,14 @@
-public class Solution {
-    public int addDigits(int num) {
+class Solution {
+public:
+    int addDigits(int num) {
         while (num >= 10) {
-        	int temp = 0;
-        	while (num > 0) {
-        		temp += num % 10;
-        		num = num / 10;
-        	}
-        	num = temp;
+            int res = 0, cnt = num;
+            while (cnt != 0) {
+                res += cnt % 10;
+                cnt = cnt / 10;
+            }
+            num = res;
         }
         return num;
     }
-}
+};
