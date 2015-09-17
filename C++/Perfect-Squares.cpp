@@ -1,16 +1,16 @@
-class Solution {
-public:
-    int numSquares(int n) {
-        int cur = sqrt(double(n) + 0.5);
-        vector<int> bin(n + 1, 1000);
-        bin[0] = 0;
+public class Solution {
+    public int numSquares(int n) {
+        int cur = (int)Math.sqrt((double)n + 0.5);
+        int[]dp = new int[n + 1];
+        Arrays.fill(dp, 1000);
+        dp[0] = 0;
         for (int i = 0; i <= n; i ++) {
-        	for (int j = 1; j <= cur; j ++) {
-        		int cnt = i + j * j;
-        		if (cnt > n) break;
-        		if (bin[cnt] > bin[i] + 1) bin[cnt] = bin[i] + 1;
-        	}
+            for (int j = 1; j <= cur; j ++) {
+                int cnt = j * j + i;
+                if (cnt > n) break;
+                if (dp[cnt] > dp[i] + 1) dp[cnt] = dp[i] + 1;
+            }
         }
-        return bin[n];
+        return dp[n];
     }
-};
+}
